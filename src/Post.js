@@ -40,8 +40,8 @@ class Posts {
       const size = data.size ? data.size : Buffer.byteLength(data, 'utf8');
       post.meta = new MetaInfo(post.type, size, new Date().getTime(), data.from);
       if(post.type) delete post.type;
-      ipfs.object.put(new Buffer(JSON.stringify({ Data: JSON.stringify(post) })), "json")
-        .then((res) => resolve({ Post: post, Hash: res.Hash }))
+      ipfs.object.put(new Buffer(JSON.stringify(post)), "json")
+        .then((res) => resolve({ Post: post, Hash: res.toJSON().Hash }))
         .catch(reject);
     });
   }
