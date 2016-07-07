@@ -28,7 +28,7 @@ class Posts {
       if(type === PostTypes.Message) {
         post = new PostTypes.Message(data.content);
       } else if(type === PostTypes.File) {
-        post = new PostTypes.File(data.name, data.hash, data.size);
+        post = new PostTypes.File(data.name, data.hash, data.size, data.meta);
       } else if(type == PostTypes.Directory) {
         post = new PostTypes.Directory(data.name, data.hash, data.size);
       } else if(type == PostTypes.OrbitDBItem) {

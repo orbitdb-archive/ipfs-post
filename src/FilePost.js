@@ -4,11 +4,12 @@ const Post = require('./BasePost');
 
 // A reference to a file
 class FilePost extends Post {
-  constructor(name, hash, size) {
+  constructor(name, hash, size, meta) {
     super("file");
     this.name = name;
     this.hash = hash;
-    this.size = size;
+    this.size = size || - 1;
+    this.meta = meta || {};
   }
 }
 
