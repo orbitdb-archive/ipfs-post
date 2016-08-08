@@ -1,6 +1,6 @@
 {
   "name": "ipfs-post",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "POST prototype for IPFS",
   "main": "src/Post.js",
   "scripts": {
