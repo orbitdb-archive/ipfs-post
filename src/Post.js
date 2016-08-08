@@ -8,6 +8,7 @@ const DirectoryPost = require('./DirectoryPost');
 const OrbitDBItem   = require('./OrbitDBItem');
 const MetaInfo      = require('./MetaInfo');
 const Poll          = require('./Poll');
+const Crypto        = require('orbit-crypto')
 
 const PostTypes = {
   Message: TextPost,
@@ -40,7 +41,28 @@ class Posts {
       const size = data.size ? data.size : Buffer.byteLength(data, 'utf8');
       post.meta = Object.assign(post.meta || {}, new MetaInfo(post.type, size, new Date().getTime(), data.from))
       if(post.type) delete post.type;
-      ipfs.object.put(new Buffer(JSON.stringify(post)))
+
+      const sign = (key) => {
+        let result = {}
+        if(key) {
+          return Crypto.sign(key, new Buffer(JSON.stringify(post)))
+            .then((signature) => result.signature = Buffer.from(signature))
+            .then(() => Crypto.exportKeyToIpfs(ipfs, signKey))
+            .then((hash) => result.signKeyHash = hash)
+            .then(() => result)
+        }
+        return result;
+      }
+
+      sign(signKey)
+        .then((result) => {
+          if(result.signKeyHash && result.signature) {
+            post.sig = result.signature
+            post.signKey = result.signKeyHash
+            console.log("SIGNATURE", post.sig)
+          }
+        })
+        .then(() => ipfs.object.put(new Buffer(JSON.stringify(post))))
         .then((res) => resolve({ Post: post, Hash: res.toJSON().Hash }))
         .catch(reject);
     });
