@@ -21,7 +21,7 @@ const PostTypes = {
 
 // Factory
 class Posts {
-  static create(ipfs, type, data) {
+  static create(ipfs, type, data, signKey) {
     return new Promise((resolve, reject) => {
       let post;
 
