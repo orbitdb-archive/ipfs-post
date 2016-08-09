@@ -59,7 +59,6 @@ class Posts {
           if(result.signKeyHash && result.signature) {
             post.sig = result.signature
             post.signKey = result.signKeyHash
-            console.log("SIGNATURE", post.sig)
           }
         })
         .then(() => ipfs.object.put(new Buffer(JSON.stringify(post))))
