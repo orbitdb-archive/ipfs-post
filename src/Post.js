@@ -46,7 +46,10 @@ class Posts {
         let result = {}
         if(key) {
           return Crypto.sign(key, new Buffer(JSON.stringify(post)))
-            .then((signature) => result.signature = Buffer.from(signature))
+            .then((signature) => {
+              console.log("SIGNATURE", signature)
+              result.signature = Buffer.from(signature)
+            })
             .then(() => Crypto.exportKeyToIpfs(ipfs, signKey))
             .then((hash) => result.signKeyHash = hash)
             .then(() => result)
