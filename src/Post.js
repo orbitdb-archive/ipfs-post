@@ -22,7 +22,7 @@ const PostTypes = {
 
 // Factory
 class Posts {
-  static create(ipfs, type, data, signKey) {
+  static create(ipfs, type, data, keys) {
     return new Promise((resolve, reject) => {
       let post;
 
@@ -45,16 +45,16 @@ class Posts {
       const sign = (key) => {
         let result = {}
         if(key) {
-          return Crypto.sign(key, new Buffer(JSON.stringify(post)))
-            .then((signature) => result.signature = new Uint8Array(signature))
-            .then(() => Crypto.exportKeyToIpfs(ipfs, signKey))
+          return Crypto.sign(key.privateKey, new Buffer(JSON.stringify(post)))
+            .then((signature) => result.signature = signature)
+            .then(() => Crypto.exportKeyToIpfs(ipfs, key.publicKey))
             .then((hash) => result.signKeyHash = hash)
             .then(() => result)
         }
         return result;
       }
 
-      sign(signKey)
+      sign(keys)
         .then((result) => {
           if(result.signKeyHash && result.signature) {
             post.sig = result.signature
