@@ -5,9 +5,10 @@ const Post = require('./BasePost');
 
 // Simplest type of post: a string
 class TextPost extends Post {
-  constructor(content) {
+  constructor(content, replyto) {
     super("text");
     this.content = content;
+    this.replyto = replyto;
   }
 
   // encrypt(privkey, pubkey) {

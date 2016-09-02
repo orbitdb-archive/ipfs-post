@@ -1,6 +1,5 @@
 'use strict';
 
-const Buffer        = require('buffer').Buffer;
 const Post          = require('./BasePost');
 const TextPost      = require('./TextPost');
 const FilePost      = require('./FilePost');
@@ -27,7 +26,7 @@ class Posts {
       let post;
 
       if(type === PostTypes.Message) {
-        post = new PostTypes.Message(data.content);
+        post = new PostTypes.Message(data.content, data.replyto);
       } else if(type === PostTypes.File) {
         post = new PostTypes.File(data.name, data.hash, data.size, data.meta);
       } else if(type == PostTypes.Directory) {
