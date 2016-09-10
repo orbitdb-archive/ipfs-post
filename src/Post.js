@@ -2,6 +2,7 @@
 
 const Post          = require('./BasePost');
 const TextPost      = require('./TextPost');
+const PinnedPost    = require('./PinnedPost');
 const FilePost      = require('./FilePost');
 const DirectoryPost = require('./DirectoryPost');
 const OrbitDBItem   = require('./OrbitDBItem');
@@ -11,6 +12,7 @@ const Crypto        = require('orbit-crypto')
 
 const PostTypes = {
   Message: TextPost,
+  Pin: PinnedPost,
   Snippet: "snippet",
   File: FilePost,
   Directory: DirectoryPost,
@@ -27,6 +29,8 @@ class Posts {
 
       if(type === PostTypes.Message) {
         post = new PostTypes.Message(data.content, data.replyto);
+      } else if(type === PostTypes.Pin) {
+        post = new PostTypes.Pin(data.pinned);
       } else if(type === PostTypes.File) {
         post = new PostTypes.File(data.name, data.hash, data.size, data.meta);
       } else if(type == PostTypes.Directory) {
