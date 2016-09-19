@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/haadcode/ipfs-post#readme",
   "dependencies": {
-    "orbit-crypto": "0.0.8"
+    "orbit-crypto": "0.0.9"
   }
 }
