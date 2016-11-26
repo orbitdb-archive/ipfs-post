@@ -65,7 +65,7 @@ class Posts {
           }
         })
         .then(() => ipfs.object.put(new Buffer(JSON.stringify(post))))
-        .then((res) => resolve({ Post: post, Hash: res.toJSON().Hash }))
+        .then((res) => resolve({ Post: post, Hash: res.toJSON().multihash }))
         .catch(reject);
     });
   }

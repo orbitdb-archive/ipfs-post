@@ -1,6 +1,6 @@
 {
   "name": "ipfs-post",
-  "version": "0.0.15",
+  "version": "0.1.0-beta.1",
   "description": "POST prototype for IPFS",
   "main": "src/Post.js",
   "scripts": {
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/haadcode/ipfs-post#readme",
   "dependencies": {
-    "orbit-crypto": "0.0.9"
+    "orbit-crypto": "^0.1.0-beta.1"
   }
 }
