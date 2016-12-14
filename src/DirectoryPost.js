@@ -8,6 +8,7 @@ class DirectoryPost extends Post {
     super("directory");
     this.name = name;
     this.hash = hash;
+    this.file = hash;
     this.size = size;
   }
 }

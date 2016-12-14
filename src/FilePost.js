@@ -8,6 +8,7 @@ class FilePost extends Post {
     super("file");
     this.name = name;
     this.hash = hash;
+    this.file = hash;
     this.size = size || - 1;
     this.meta = meta || {};
   }
