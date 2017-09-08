@@ -41,7 +41,7 @@ class Posts {
         post = new PostTypes.Poll(data.question, data.options);
       }
 
-      const size = data.size ? data.size : Buffer.byteLength(data, 'utf8');
+      const size = data.size ? data.size : Buffer.byteLength(JSON.stringify(data), 'utf8');
       post.meta = Object.assign(post.meta || {}, new MetaInfo(post.type, size, new Date().getTime(), data.from))
       if(post.type) delete post.type;
 
