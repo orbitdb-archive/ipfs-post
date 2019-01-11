@@ -12,6 +12,12 @@
   },
   "author": "Haad",
   "license": "MIT",
+  "keywords": [
+    "ipfs",
+    "orbitdb",
+    "orbit",
+    "post"
+  ],
   "bugs": {
     "url": "https://github.com/haadcode/ipfs-post/issues"
   },
