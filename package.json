@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/haadcode/ipfs-post.git"
+    "url": "git+https://github.com/orbitdb/ipfs-post.git"
   },
   "author": "Haad",
   "license": "MIT",
@@ -19,9 +19,9 @@
     "post"
   ],
   "bugs": {
-    "url": "https://github.com/haadcode/ipfs-post/issues"
+    "url": "https://github.com/orbitdb/ipfs-post/issues"
   },
-  "homepage": "https://github.com/haadcode/ipfs-post#readme",
+  "homepage": "https://github.com/orbitdb/ipfs-post#readme",
   "dependencies": {
     "orbit-crypto": "^0.1.0-beta.1"
   }
